@@ -59,7 +59,7 @@ def recordVideo(outputPath, depthPath):
 def spliceIntoFrames(parentPath, inputVideoPath):
     print("splicing")
     #outputPath = parentPath + 'dataset/' + 'images' + '/train'
-    outputPath = parentPath + 'testImages/'
+    outputPath = parentPath #+ 'testImages/'
     cap = cv2.VideoCapture(inputVideoPath)
     #save one image every 1000 frames
 
@@ -70,7 +70,7 @@ def spliceIntoFrames(parentPath, inputVideoPath):
         #ret is a bool that returns true if a frame is found
         #frame returns the frame
         ret, frame = cap.read()
-        cv2.imshow('image', frame)
+        #cv2.imshow('image', frame)
         if ret == False:
             break
         if (iteration%frameIndexes)==0:
@@ -82,11 +82,11 @@ def spliceIntoFrames(parentPath, inputVideoPath):
         iteration+=1
 
 if __name__ == "__main__":
-    parentPath = '/home/dev/dev/robotics/vexai8029/'
+    parentPath = '/home/dev/dev/robotics/vexai8029/testImages/'
     #recordVideo(parentPath, parentPath)
     #setupOutputDirectories(parentPath)
     #copyFile('output.avi', 'outputCopy.avi')
     inputVideoPath = parentPath + 'output.avi'
-    #print(inputVideoPath)
+    print(inputVideoPath)
     spliceIntoFrames(parentPath, inputVideoPath)
     print("Task completed")
